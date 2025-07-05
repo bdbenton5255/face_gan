@@ -35,3 +35,14 @@ lr = 0.0002
 beta1 = 0.5
 ngpu = 1
 
+#Create dataset from images
+dataset = dset.ImageFolder(root=dataroot,
+                           transform=transforms.Compose([
+                            transforms.Resize(image_size),
+                            transforms.CenterCrop(image_size),
+                            transforms.ToTensor(),
+                            transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
+                           ]))
+
+#Create dataloader from dataset
+dataloader = torch.utils.data.dataloader(dataset, batch_size=batch_size, shuffle=True, num_workers=workers)
