@@ -1,1 +1,1 @@
-A Deep Convolutional Generative Adversarial Network (DCGAN) made with Python's PyTorch that employs a GAN with convolutional layers to generate realistic images of faces.
+A Deep Convolutional Generative Adversarial Network (DCGAN) made with Python's PyTorch that generates realistic images of faces.
