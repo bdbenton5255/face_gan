@@ -43,3 +43,6 @@ dataset = dset.ImageFolder(root=dataroot,
                             transforms.ToTensor(),
                             transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
                            ]))
+
+#Create dataloader from dataset
+dataloader = torch.utils.data.DataLoader(dataset, batch_size=batch_size, shuffle=True, num_workers=workers)
