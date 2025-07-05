@@ -46,3 +46,7 @@ dataset = dset.ImageFolder(root=dataroot,
 
 #Create dataloader from dataset
 dataloader = torch.utils.data.DataLoader(dataset, batch_size=batch_size, shuffle=True, num_workers=workers)
+
+#Configure GPU or CPU
+device = torch.device("cuda:0" if (torch.cuda.is_available() and ngpu > 0) else "cpu")
+print(device)
