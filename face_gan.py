@@ -164,3 +164,11 @@ img_list = []
 G_losses = []
 D_losses = []
 iters = 0
+
+#Training loop
+print("Starting training loop...")
+for epoch in range(num_epochs):
+    for i, data in enumerate(dataloader, 0):
+        #Train with real batch
+        netD.zero_grad()
+        
