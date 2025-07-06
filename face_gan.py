@@ -158,3 +158,9 @@ fake_label = 0
 #Adam optimizers
 optimizerD = optim.Adam(netD.parameters(), lr=lr, betas=(beta1, 0.999))
 optimizerG = optim.Adam(netG.parameters(), lr=lr, betas=(beta1, 0.999))
+
+#Lists for training progress tracking
+img_list = []
+G_losses = []
+D_losses = []
+iters = 0
