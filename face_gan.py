@@ -140,7 +140,7 @@ class Discriminator(nn.Module):
 netD = Discriminator(ngpu).to(device)
 
 #Apply weights to discriminator
-nedD.apply(weights_init)
+netD.apply(weights_init)
 
 #Print discriminator model
 print(netD)
