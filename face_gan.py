@@ -148,3 +148,5 @@ print(netD)
 #Initialize loss function
 criterion = nn.BCELoss()
 
+#Latent vectors to visualize progression
+fixed_noise = torch.randn(64, nz, 1, 1, device=device)
