@@ -100,3 +100,6 @@ class Generator(nn.Module):
 
 #Instantiate generator
 netG = Generator(ngpu).to(device)
+
+#Apply weights
+netG.apply(weights_init)
