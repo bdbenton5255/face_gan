@@ -141,3 +141,6 @@ netD = Discriminator(ngpu).to(device)
 
 #Apply weights to discriminator
 nedD.apply(weights_init)
+
+#Print discriminator model
+print(netD)
