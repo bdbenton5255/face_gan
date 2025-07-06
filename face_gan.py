@@ -138,3 +138,6 @@ class Discriminator(nn.Module):
 
 #Instantiate discriminator
 netD = Discriminator(ngpu).to(device)
+
+#Apply weights to discriminator
+nedD.apply(weights_init)
