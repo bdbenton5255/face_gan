@@ -101,7 +101,7 @@ class Generator(nn.Module):
 #Instantiate generator
 netG = Generator(ngpu).to(device)
 
-#Apply weights
+#Apply weights to generator
 netG.apply(weights_init)
 
 #Print generator model
@@ -136,3 +136,5 @@ class Discriminator(nn.Module):
     def forward(self, input):
         return self.main(input)
 
+#Instantiate discriminator
+netD = Discriminator(ngpu).to(device)
