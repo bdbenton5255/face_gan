@@ -52,9 +52,19 @@ device = torch.device("cpu")
 print(device)
 
 #Plot training data
-real_batch = next(iter(dataloader))
-plt.figure(figsize=(8,8))
-plt.axis("off")
-plt.title("Training Images")
-plt.imshow(np.transpose(vutils.make_grid(real_batch[0].to(device)[:64], padding=2, normalize=True).cpu(),(1,2,0)))
-plt.show()
+#real_batch = next(iter(dataloader))
+#plt.figure(figsize=(8,8))
+#plt.axis("off")
+#plt.title("Training Images")
+#plt.imshow(np.transpose(vutils.make_grid(real_batch[0].to(device)[:64], padding=2, normalize=True).cpu(),(1,2,0)))
+#plt.show()
+
+#Define weights
+def weights_init(m):
+    classname = m.__class__.__name__
+    if classname.find('Conv') != -1:
+        nn.init.normal_(m.weight.data, 0.0, 0.02)
+    elif classname.find('BatchNorm') != -1:
+        nn.init.normal_(m.weight.data, 1.0, 0.02)
+        nn.init.constant_(m.bias.data,0)
+
