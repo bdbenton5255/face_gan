@@ -144,3 +144,7 @@ netD.apply(weights_init)
 
 #Print discriminator model
 print(netD)
+
+#Initialize loss function
+criterion = nn.BCELoss()
+
