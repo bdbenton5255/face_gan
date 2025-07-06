@@ -97,3 +97,6 @@ class Generator(nn.Module):
     
     def forward(self, input):
         return self.main(input)
+
+#Instantiate generator
+netG = Generator(ngpu).to(device)
