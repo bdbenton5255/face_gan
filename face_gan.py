@@ -210,3 +210,10 @@ for epoch in range(num_epochs):
         errG.backward()
         D_G_z2 = output.mean().item()
         optimizerG.step()
+
+        #Print training progress
+
+        if i % 50 == 0:
+            print('[%d/%d][%d/%d]\tLoss_D: %.4f\tLoss_G: %.4f\tD(x): %.4f\tD(G(z)): %.4f / %.4f'
+                  % (epoch, num_epochs, i, len(dataloader),
+                     errD.item(), errG.item(), D_x, D_G_z1, D_G_z2))
