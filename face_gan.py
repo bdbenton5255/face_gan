@@ -176,4 +176,7 @@ for epoch in range(num_epochs):
         b_size = real_cpu.size(0)
         label = torch.full((b.size,), real_label, dtype=torch.float, device=device)
         output = netD(real_cpu).view(-1)
-        
+        #Calculate loss and gradients for backpropagation
+        errD_real = criterion(output, label)
+        errD_real.backward()
+        D_x = output.mean().item()
