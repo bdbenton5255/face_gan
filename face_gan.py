@@ -169,7 +169,9 @@ iters = 0
 print("Starting training loop...")
 for epoch in range(num_epochs):
     for i, data in enumerate(dataloader, 0):
+
         #Train with real batch
+
         netD.zero_grad()
         #Format batch and pass through discriminator
         real_cpu = data[0].to(device)
@@ -180,3 +182,19 @@ for epoch in range(num_epochs):
         errD_real = criterion(output, label)
         errD_real.backward()
         D_x = output.mean().item()
+
+        #Train with fake batch
+
+        #Latent vector batch and fake image generation
+        noise = torch.randn(b_size, nz, 1, 1, device=device)
+        fake = netG(noise)
+        label.fill_(fake_label)
+        #Classify fake batch with discriminator and calculate loss
+        output = netD(fake.detach()).view(-1)
+        errD_fake = criterion(output, label)
+        #Calcaulate gradients and error
+        errD_fake.backward()
+        D_G_z1 = output.mean().item()
+        errD = errD_real + errD_fake
+        #Update discriminator
+        optimizerD.step()
