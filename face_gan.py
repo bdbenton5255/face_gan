@@ -249,3 +249,18 @@ ims = [[plt.imshow(np.transpose(i,(1,2,0)), animated=True)] for i in img_list]
 ani = animation.ArtistAnimation(fig, ims, interval=1000, repeat_delay=1000, blit=True)
 
 HTML(ani.to_jshtml())
+
+#Compare real and fake images
+real_batch = next(iter(dataloader))
+
+plt.figure(figsize=(15,15))
+plt.subplot(1,2,1)
+plt.axis("off")
+plt.title("Real Images")
+plt.imshow(np.transpose(vutils.make_grid(real_batch[0].to(device)[:64], padding=5, normalize=True).cpu(),(1,2,0)))
+
+plt.subplot(1,2,2)
+plt.axis("off")
+plt.title("Fake Images")
+plt.imshow(np.transpose(img_list[-1],(1,2,0)))
+plt.show()
