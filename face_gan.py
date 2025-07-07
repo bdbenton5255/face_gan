@@ -176,7 +176,7 @@ for epoch in range(num_epochs):
         #Format batch and pass through discriminator
         real_cpu = data[0].to(device)
         b_size = real_cpu.size(0)
-        label = torch.full((b.size,), real_label, dtype=torch.float, device=device)
+        label = torch.full((b_size,), real_label, dtype=torch.float, device=device)
         output = netD(real_cpu).view(-1)
         #Calculate loss and gradients for backpropagation
         errD_real = criterion(output, label)
