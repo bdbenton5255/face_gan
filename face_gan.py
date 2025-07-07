@@ -198,3 +198,15 @@ for epoch in range(num_epochs):
         errD = errD_real + errD_fake
         #Update discriminator
         optimizerD.step()
+
+        #Update generator
+
+        netG.zero_grad()
+        label.fill_(real_label)
+        #Forward pass for fake batch and generator loss
+        output = netD(fake).view(-1)
+        errG = criterion(output, label)
+        #Calculate gradient and update generator
+        errG.backward()
+        D_G_z2 = output.mean().item()
+        optimizerG.step()
