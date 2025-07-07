@@ -171,4 +171,9 @@ for epoch in range(num_epochs):
     for i, data in enumerate(dataloader, 0):
         #Train with real batch
         netD.zero_grad()
+        #Format batch and pass through discriminator
+        real_cpu = data[0].to(device)
+        b_size = real_cpu.size(0)
+        label = torch.full((b.size,), real_label, dtype=torch.float, device=device)
+        output = netD(real_cpu).view(-1)
         
